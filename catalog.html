@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Каталог товаров учебного интернет-магазина.">
+    <title>Каталог товаров – TURIST bezgranits</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">
+        Перейти к содержимому
+    </a>
+
+    <!-- ==================== ШАПКА ==================== -->
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__logo" href="index.html">TURIST bezgranits</a>
+
+            <button class="button button--secondary menu-toggle" type="button"
+                aria-controls="site-navigation" aria-expanded="true" hidden>
+                Меню
+            </button>
+
+            <nav class="site-nav" id="site-navigation" aria-label="Основная навигация">
+                <ul class="site-nav__list">
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html">Главная</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link site-nav__link--active" href="catalog.html" aria-current="page">
+                            Каталог
+                        </a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="contacts.html">Контакты</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html#advantages">Преимущества</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html#popular">Популярные туры</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html#contacts">Обратная связь</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==================== ОСНОВНОЕ СОДЕРЖИМОЕ ==================== -->
+    <main id="main-content" tabindex="-1">
+
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+            <a class="breadcrumbs__link" href="index.html">Главная</a>
+            <span class="breadcrumbs__current">Каталог</span>
+        </nav>
+
+        <div class="section">
+            <h1 class="section__title">Каталог туров</h1>
+        </div>
+
+        <section class="catalog-layout">
+            <aside class="catalog-filters">
+                <h2 class="catalog-filters__title">Фильтры</h2>
+
+                <details class="filters-disclosure" open>
+                    <summary class="filters-toggle">Показать фильтры</summary>
+                <form class="filters-form" action="#" method="get">
+
+                    <fieldset class="filters-form__group">
+                        <legend class="filters-form__legend">Категория</legend>
+
+                        <label class="filters-form__label">
+                            <input class="filters-form__checkbox" type="checkbox" name="category" value="all">
+                            Все туры
+                        </label>
+
+                        <label class="filters-form__label">
+                            <input class="filters-form__checkbox" type="checkbox" name="category" value="popular">
+                            Популярные
+                        </label>
+
+                        <label class="filters-form__label">
+                            <input class="filters-form__checkbox" type="checkbox" name="category" value="new">
+                            Новинки
+                        </label>
+                    </fieldset>
+
+                    <fieldset class="filters-form__group">
+                        <legend class="filters-form__legend">Цена</legend>
+
+                        <label class="filters-form__label" for="price-from">От</label>
+                        <input
+                            class="filters-form__input"
+                            id="price-from"
+                            name="price-from"
+                            type="number"
+                            min="0"
+                            placeholder="0"
+                        >
+
+                        <label class="filters-form__label" for="price-to">До</label>
+                        <input
+                            class="filters-form__input"
+                            id="price-to"
+                            name="price-to"
+                            type="number"
+                            min="0"
+                            placeholder="5000"
+                        >
+                    </fieldset>
+
+                    <button class="button button--primary" type="submit">Применить</button>
+
+                </form>
+                </details>
+            </aside>
+
+            <section class="catalog-products">
+                <h2 class="catalog-products__title">Список туров</h2>
+
+                <div class="products-grid">
+
+                    <article class="product-card">
+                        <img class="product-card__image" src="images/usa.jpg" alt="Тур в Вашингтон">
+                        <h3 class="product-card__title">Вашингтон</h3>
+                        <p class="product-card__description">5 дней, отель 4★, завтраки.</p>
+                        <p class="product-card__price">от 500 000 ₽</p>
+                        <a class="button button--primary product-card__button" href="product.html">
+                            Подробнее
+                        </a>
+                    </article>
+
+                    <article class="product-card">
+                        <img class="product-card__image" src="images/paris.jpg" alt="Тур в Париж">
+                        <h3 class="product-card__title">Париж</h3>
+                        <p class="product-card__description">7 дней, отель 3★, завтраки.</p>
+                        <p class="product-card__price">от 200 000 ₽</p>
+                        <a class="button button--primary product-card__button" href="product.html">
+                            Подробнее
+                        </a>
+                    </article>
+
+                    <article class="product-card">
+                        <img class="product-card__image" src="images/pyongyang.jpg" alt="Тур в Пхеньян">
+                        <h3 class="product-card__title">Пхеньян</h3>
+                        <p class="product-card__description">4 дня, отель 4★, полный пансион.</p>
+                        <p class="product-card__price">от 120 000 ₽</p>
+                        <a class="button button--primary product-card__button" href="product.html">
+                            Подробнее
+                        </a>
+                    </article>
+
+                    <article class="product-card">
+                        <img class="product-card__image" src="images/turkie.jpg" alt="Тур в Стамбул">
+                        <h3 class="product-card__title">Стамбул</h3>
+                        <p class="product-card__description">5 дней, отель 4★, завтраки.</p>
+                        <p class="product-card__price">от 45 000 ₽</p>
+                        <a class="button button--primary product-card__button" href="product.html">
+                            Подробнее
+                        </a>
+                    </article>
+
+                    <!-- 5. Бали -->
+                    <article class="product-card">
+                        <img class="product-card__image" src="images/bali.jpg" alt="Тур на Бали">
+                        <h3 class="product-card__title">Бали</h3>
+                        <p class="product-card__description">10 дней, вилла, завтраки.</p>
+                        <p class="product-card__price">от 120 000 ₽</p>
+                        <a class="button button--primary product-card__button" href="product.html">
+                            Подробнее
+                        </a>
+                    </article>
+
+                    <!-- 6. Египет -->
+                    <article class="product-card">
+                        <img class="product-card__image" src="images/egypt.jpg" alt="Тур в Египет">
+                        <h3 class="product-card__title">Египет</h3>
+                        <p class="product-card__description">8 дней, отель 5★, всё включено.</p>
+                        <p class="product-card__price">от 65 000 ₽</p>
+                        <a class="button button--primary product-card__button" href="product.html">
+                            Подробнее
+                        </a>
+                    </article>
+
+                    <!-- 7. Токио -->
+                    <article class="product-card">
+                        <img class="product-card__image" src="images/japan.jpg" alt="Тур в Токио">
+                        <h3 class="product-card__title">Токио</h3>
+                        <p class="product-card__description">9 дней, отель 4★, завтраки.</p>
+                        <p class="product-card__price">от 145 000 ₽</p>
+                        <a class="button button--primary product-card__button" href="product.html">
+                            Подробнее
+                        </a>
+                    </article>
+
+                    <!-- 8. Марокко -->
+                    <article class="product-card">
+                        <img class="product-card__image" src="images/marocco.jpg" alt="Тур в Марокко">
+                        <h3 class="product-card__title">Марокко</h3>
+                        <p class="product-card__description">7 дней, риад, завтраки.</p>
+                        <p class="product-card__price">от 88 000 ₽</p>
+                        <a class="button button--primary product-card__button" href="product.html">
+                            Подробнее
+                        </a>
+                    </article>
+
+                    <!-- 9. Мальдивы -->
+                    <article class="product-card">
+                        <img class="product-card__image" src="images/maldivi.jpg" alt="Тур на Мальдивы">
+                        <h3 class="product-card__title">Мальдивы</h3>
+                        <p class="product-card__description">8 дней, водная вилла, всё включено.</p>
+                        <p class="product-card__price">от 220 000 ₽</p>
+                        <a class="button button--primary product-card__button" href="product.html">
+                            Подробнее
+                        </a>
+                    </article>
+
+                </div>
+            </section>
+
+        </section>
+
+    </main>
+
+    <!-- ==================== ПОДВАЛ ==================== -->
+    <footer class="site-footer">
+        <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены. DISIGN BY ANDREW TRUSHKOV EFBO-04-25.</p>
+        <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+    </footer>
+    <a class="scroll-top" href="#" aria-label="Наверх">↑</a>
+</body>
+</html>

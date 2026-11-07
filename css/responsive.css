@@ -1,0 +1,314 @@
+/* Адаптивные стили для КР3. Подход Mobile First. */
+.menu-toggle[hidden],
+.site-nav[hidden] {
+    display: none;
+}
+
+.menu-toggle {
+    display: block;
+    min-height: 44px;
+    max-width: 100%;
+    margin-top: 12px;
+}
+
+/* Базовые правила для небольших экранов */
+img {
+    max-width: 100%;
+}
+
+.section {
+    padding-inline: 16px;
+}
+
+.hero,
+.aside-info {
+    width: calc(100% - 32px);
+}
+
+/* Шапка и меню */
+.site-header {
+    position: static;
+}
+
+.site-header__inner {
+    padding: 16px;
+}
+
+.site-nav__list {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+}
+
+.site-nav__link {
+    display: block;
+    text-align: center;
+    padding: 12px 16px;
+}
+
+/* Главный баннер */
+.hero {
+    padding: 24px 16px;
+}
+
+.hero__title {
+    font-size: 26px;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+
+/* На телефоне карточки расположены в одну колонку */
+.advantages-grid,
+.products-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+}
+
+/* Планшеты: от 768 пикселей */
+@media (min-width: 768px) {
+    .site-nav__list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 32px 24px;
+    }
+
+    .hero__title {
+        font-size: 36px;
+    }
+
+    .advantages-grid,
+    .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+    }
+}
+
+/* Компьютеры: от 1024 пикселей */
+@media (min-width: 1024px) {
+    .advantages-grid,
+    .products-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* Каталог: на телефоне фильтр расположен над турами */
+.catalog-layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+        "filters"
+        "products";
+    padding-inline: 16px;
+    gap: 24px;
+}
+
+.catalog-filters,
+.catalog-products {
+    min-width: 0;
+}
+
+.filters-form__group {
+    min-width: 0;
+}
+
+/* На компьютере фильтр находится слева */
+@media (min-width: 1024px) {
+    .catalog-layout {
+        grid-template-columns: 260px minmax(0, 1fr);
+        grid-template-areas: "filters products";
+    }
+
+    .catalog-products .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Страница тура: одна колонка на телефоне */
+.product-detail {
+    grid-template-columns: minmax(0, 1fr);
+    padding-inline: 16px;
+    gap: 24px;
+}
+
+.product-detail > * {
+    min-width: 0;
+}
+
+.product-detail__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.product-detail__title {
+    overflow-wrap: anywhere;
+}
+
+/* На планшете и компьютере — две колонки */
+@media (min-width: 768px) {
+    .product-detail {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Прокручивается только таблица, а не вся страница */
+.table-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.table-wrapper:focus-visible {
+    outline: 3px solid #222222;
+    outline-offset: 3px;
+}
+
+.table-wrapper .product-table {
+    min-width: 600px;
+}
+
+/* Форма заявки на отдельной странице */
+.order-form--page {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+}
+
+.order-form--page .order-form__field {
+    min-width: 0;
+    margin-bottom: 0;
+}
+
+/* Размеры полей для удобного ввода на телефоне */
+.order-form__input,
+.order-form__select,
+.order-form__textarea {
+    min-width: 0;
+    max-width: 100%;
+    min-height: 44px;
+    font-size: 16px;
+}
+
+.order-form__textarea {
+    resize: vertical;
+}
+
+.order-form__checkbox-label {
+    align-items: flex-start;
+}
+
+.order-form__checkbox {
+    flex-shrink: 0;
+}
+
+/* На телефоне кнопки расположены друг под другом */
+.order-form__actions {
+    flex-direction: column;
+}
+
+.order-form__actions .button {
+    min-height: 44px;
+    text-align: center;
+}
+
+/* Эти блоки занимают всю ширину формы */
+.order-form--page .order-form__field--wide,
+.order-form--page .order-form__field--checkbox,
+.order-form--page .order-form__actions {
+    grid-column: 1 / -1;
+}
+
+/* Две колонки на планшете и компьютере */
+@media (min-width: 768px) {
+    .order-form--page {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+    }
+
+    .order-form__actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+/* Контакты: длинные строки не выходят за экран */
+.contacts-list__item {
+    overflow-wrap: anywhere;
+    margin-bottom: 12px;
+}
+
+/* Карта на телефоне */
+.map-frame {
+    width: 100%;
+    height: 280px;
+}
+
+/* Карта на планшете и компьютере */
+@media (min-width: 768px) {
+    .map-frame {
+        height: 400px;
+    }
+}
+
+/* Фильтры доступны и без JavaScript через нативный details. */
+.filters-toggle {
+    min-height: 44px;
+    padding: 12px;
+    color: var(--color-primary-dark);
+    cursor: pointer;
+    font-weight: 700;
+}
+.filters-toggle:focus-visible {
+    outline: 3px solid #222222;
+    outline-offset: 3px;
+}
+.filters-disclosure[open] .filters-form {
+    margin-top: 16px;
+}
+@media (min-width: 1024px) {
+    .filters-disclosure--enhanced > .filters-toggle {
+        display: none;
+    }
+}
+
+/* На телефоне каждая строка таблицы становится карточкой. */
+@media (max-width: 767px) {
+    .table-wrapper .product-table {
+        display: block;
+        min-width: 0;
+    }
+    .product-table caption {
+        display: block;
+        padding: 8px 0;
+    }
+    .product-table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+    .product-table tbody {
+        display: grid;
+        gap: 12px;
+    }
+    .product-table tbody tr {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+    }
+    .product-table tbody th,
+    .product-table tbody td {
+        display: block;
+        padding: 12px 16px;
+        border: 0;
+        overflow-wrap: anywhere;
+    }
+}

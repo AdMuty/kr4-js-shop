@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Учебный frontend-проект интернет-магазина.">
+    <title>TURIST bezgranits — Лучшее туристическое агентство Мира</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">
+        Перейти к содержимому
+    </a>
+
+    <!-- ==================== ШАПКА ==================== -->
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__logo" href="index.html">TURIST bezgranits</a>
+
+            <button
+                class="button button--secondary menu-toggle"
+                type="button"
+                aria-controls="site-navigation"
+                aria-expanded="true"
+                hidden
+            >
+                Меню
+            </button>
+
+            <nav
+                class="site-nav"
+                id="site-navigation"
+                aria-label="Основная навигация"
+            >
+                <ul class="site-nav__list">
+                    <li class="site-nav__item">
+                        <a
+                            class="site-nav__link site-nav__link--active"
+                            href="index.html"
+                            aria-current="page"
+                        >
+                            Главная
+                        </a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="catalog.html">Каталог</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="contacts.html">Контакты</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html#advantages">Преимущества</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html#popular">Популярные товары</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html#contacts">Обратная связь</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==================== ОСНОВНОЕ СОДЕРЖИМОЕ ==================== -->
+    <main id="main-content" tabindex="-1">
+
+        <!-- Hero-блок -->
+        <section class="hero">
+            <h1 class="hero__title">TURIST bezgranits — Лучшее туристическое агентство Мира</h1>
+            <p class="hero__text">
+                TURIST bezgranits — Самое продвинутое интернациональное туристическое агентство.
+                Туры по всему миру: Европа, Азия, Африка, экзотика.
+                Подберём путешествие под ваш бюджет и желания.
+            </p>
+            <a class="button button--primary" href="#popular">Перейти к турам</a>
+        </section>
+
+        <!-- Блок преимуществ -->
+        <section class="section" id="advantages">
+            <h2 class="section__title">Почему выбирают нас</h2>
+
+            <div class="advantages-grid">
+
+                <article class="advantage-card">
+                    <h3 class="advantage-card__title">10+ лет опыта</h3>
+                    <p class="advantage-card__text">
+                        Работаем с 2015 года. Знаем направления, отели
+                        и тонкости оформления документов.
+                    </p>
+                </article>
+
+                <article class="advantage-card">
+                    <h3 class="advantage-card__title">500+ отелей</h3>
+                    <p class="advantage-card__text">
+                        Только проверенные отели и партнёры.
+                        Никаких сюрпризов по прилёту.
+                    </p>
+                </article>
+
+                <article class="advantage-card">
+                    <h3 class="advantage-card__title">Индивидуальный подход</h3>
+                    <p class="advantage-card__text">
+                        Подбираем тур под ваш бюджет, даты и пожелания.
+                        Не шаблоны, а персональные маршруты.
+                    </p>
+                </article>
+
+                <article class="advantage-card">
+                    <h3 class="advantage-card__title">Поддержка 24/7</h3>
+                    <p class="advantage-card__text">
+                        На связи до, во время и после поездки.
+                        Поможем с любой ситуацией.
+                    </p>
+                </article>
+
+                <article class="advantage-card">
+                    <h3 class="advantage-card__title">Оплата частями</h3>
+                    <p class="advantage-card__text">
+                        Бронируйте тур сейчас — платите постепенно.
+                        Без процентов и переплат.
+                    </p>
+                </article>
+
+                <article class="advantage-card">
+                    <h3 class="advantage-card__title">15 000+ клиентов</h3>
+                    <p class="advantage-card__text">
+                        Более 15 000 довольных путешественников.
+                        Многие возвращаются снова.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Блок популярных товаров -->
+        <section class="section" id="popular">
+            <h2 class="section__title">Популярные туры</h2>
+
+            <div class="products-grid">
+
+
+                <article class="product-card">
+                    <img class="product-card__image" src="images/usa.jpg" alt="Тур в Вашингтон">
+                    <h3 class="product-card__title">Вашингтон</h3>
+                    <p class="product-card__description">5 дней, отель 4★, завтраки.</p>
+                    <p class="product-card__price">от 500 000 ₽</p>
+                    <button
+                        class="button button--primary product-card__button"
+                        type="button"
+                        data-product="Вашингтон"
+                    >
+                        Подробнее
+                    </button>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-card__image" src="images/paris.jpg" alt="Тур в Париж">
+                    <h3 class="product-card__title">Париж</h3>
+                    <p class="product-card__description">7 дней, отель 3★, завтраки.</p>
+                    <p class="product-card__price">от 200 000 ₽</p>
+                    <button class="button button--primary product-card__button" type="button" data-product="Париж">
+                        Подробнее
+                    </button>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-card__image" src="images/pyongyang.jpg" alt="Тур в Пхеньян">
+                    <h3 class="product-card__title">Пхеньян</h3>
+                    <p class="product-card__description">4 дня, отель 4★, полный пансион.</p>
+                    <p class="product-card__price">от 120 000 ₽</p>
+                    <button class="button button--primary product-card__button" type="button" data-product="Пхеньян">
+                        Подробнее
+                    </button>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Дополнительный блок -->
+        <aside class="aside-info">
+            <h2 class="aside-info__title">Нужна помощь с выбором?</h2>
+            <p class="aside-info__text">
+                Позвоните нам — подберём тур под ваш бюджет и пожелания
+                за 15 минут.
+            </p>
+            <p class="aside-info__phone">+7 (495) 123-45-67</p>
+            <a class="button button--primary" href="order.html">Оставить заявку</a>
+        </aside>
+
+    </main>
+
+    <!-- ==================== ПОДВАЛ ==================== -->
+    <footer class="site-footer" id="contacts">
+        <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены. DISIGN BY ANDREW TRUSHKOV EFBO-04-25.</p>
+        <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+    </footer>
+
+    <!-- ==================== МОДАЛЬНОЕ ОКНО ==================== -->
+
+    <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+
+        <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+
+        <form class="order-form" id="order-form" action="#" method="post" novalidate>
+
+            <input id="selected-product" name="selected-product" type="hidden">
+
+            <div class="order-form__field">
+                <label class="order-form__label" for="order-name">Имя</label>
+                <input
+                    class="order-form__input"
+                    id="order-name"
+                    name="name"
+                    type="text"
+                    placeholder="Введите ваше имя"
+                    minlength="2"
+                    autocomplete="given-name"
+                    required
+                >
+            </div>
+
+            <div class="order-form__field">
+                <label class="order-form__label" for="order-email">E-mail</label>
+                <input
+                    class="order-form__input"
+                    id="order-email"
+                    name="email"
+                    type="email"
+                    placeholder="example@mail.ru"
+                    autocomplete="email"
+                    required
+                >
+            </div>
+
+            <div class="order-form__field">
+                <label class="order-form__label" for="order-phone">Телефон</label>
+                <input
+                    class="order-form__input"
+                    id="order-phone"
+                    aria-describedby="order-phone-hint"
+                    name="phone"
+                    type="tel"
+                    inputmode="tel"
+                    placeholder="+7 (900) 000-00-00"
+                    required
+                >
+                <small class="order-form__hint" id="order-phone-hint">Введите номер, формат подставится автоматически</small>
+            </div>
+
+            <div class="order-form__field">
+                <label class="order-form__label" for="order-tour">Тур</label>
+                <select class="order-form__select" id="order-tour" name="tour" required>
+                    <option value="">Выберите тур</option>
+                    <option value="Вашингтон">Вашингтон</option>
+                    <option value="Париж">Париж</option>
+                    <option value="Пхеньян">Пхеньян</option>
+                    <option value="Стамбул">Стамбул</option>
+                    <option value="Бали">Бали</option>
+                    <option value="Египет">Египет</option>
+                    <option value="Токио">Токио</option>
+                    <option value="Марокко">Марокко</option>
+                    <option value="Мальдивы">Мальдивы</option>
+                </select>
+            </div>
+
+            <div class="order-form__field">
+                <label class="order-form__label" for="order-date">Дата поездки</label>
+                <input class="order-form__input" id="order-date" name="date" type="date" required>
+            </div>
+
+            <div class="order-form__field">
+                <label class="order-form__label" for="order-people">Количество человек</label>
+                <input
+                    class="order-form__input"
+                    id="order-people"
+                    name="people"
+                    type="number"
+                    min="1"
+                    max="20"
+                    value="1"
+                    required
+                >
+            </div>
+
+            <div class="order-form__field">
+                <label class="order-form__label" for="order-comment">Комментарий</label>
+                <textarea
+                    class="order-form__textarea"
+                    id="order-comment"
+                    name="comment"
+                    rows="4"
+                    placeholder="Укажите дополнительную информацию"
+                ></textarea>
+            </div>
+
+            <div class="order-form__field order-form__field--checkbox">
+                <label class="order-form__checkbox-label">
+                    <input
+                        class="order-form__checkbox"
+                        id="order-agreement"
+                        name="agreement"
+                        type="checkbox"
+                        required
+                    >
+                    Я согласен на обработку данных
+                </label>
+            </div>
+
+            <div class="order-form__actions">
+                <button class="button button--secondary" type="button" id="close-order-dialog">
+                    Закрыть
+                </button>
+                <button class="button button--primary" type="submit">
+                    Отправить заявку
+                </button>
+            </div>
+
+        </form>
+    </dialog>
+
+    <p class="success-message" id="success-message" hidden>
+        Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.
+    </p>
+    <a class="scroll-top" href="#" aria-label="Наверх">↑</a>
+</body>
+</html>
