@@ -230,3 +230,59 @@ if (filtersDisclosure) {
     wideCatalog.addEventListener('change', syncFilters);
     syncFilters();
 }
+
+// ==================== ОБРАБОТКА ДАННЫХ ТУРА ====================
+// Числовые расчёты отделены от форматирования результатов.
+function formatPrice(price) {
+    return `${price.toLocaleString('ru-RU')} руб.`;
+}
+
+function calculateDiscount(price, discountPercent) {
+    return price * discountPercent / 100;
+}
+
+function calculateFinalPrice(price, discountPercent) {
+    return price - calculateDiscount(price, discountPercent);
+}
+
+function getProductStatus(product) {
+    if (product.isAvailable === true) {
+        return 'Доступен для бронирования';
+    }
+    return 'Бронирование недоступно';
+}
+
+function createProductSummary(product) {
+    const finalPrice = calculateFinalPrice(product.price, product.discountPercent);
+    return `${product.title}: ${formatPrice(finalPrice)}. Статус: ${getProductStatus(product)}.`;
+}
+
+console.log('Файл main.js подключён');
+console.log(product);
+console.table(product);
+const discountValue = calculateDiscount(product.price, product.discountPercent);
+const finalPrice = calculateFinalPrice(product.price, product.discountPercent);
+const productSummary = createProductSummary(product);
+// Признак наличия скидки для тура, доступного к бронированию.
+const hasAvailableDiscount = product.isAvailable === true && product.discountPercent > 0;
+console.log('Исходная цена:', formatPrice(product.price));
+console.log('Размер скидки:', discountValue);
+console.log('Итоговая цена:', finalPrice);
+console.log('Статус:', getProductStatus(product));
+console.log('Есть доступный тур со скидкой:', hasAvailableDiscount);
+console.log(productSummary);
+
+const messageElement = document.querySelector('.js-message');
+const productOutputElement = document.querySelector('.product-output');
+if (messageElement) {
+    messageElement.textContent = 'JavaScript подключён корректно.';
+}
+if (productOutputElement) {
+    productOutputElement.textContent = productSummary;
+}
+
+// Проверка текстового представления данных без интерпретации HTML-разметки.
+const safeOutputExample = document.querySelector('.safe-output-example');
+if (safeOutputExample) {
+    safeOutputExample.textContent = '<strong>Текст пользователя</strong>';
+}

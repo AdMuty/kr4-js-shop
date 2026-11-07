@@ -708,3 +708,21 @@ textarea:focus-visible,
     font-size: 14px;
 }
 
+
+/* Представление результатов обработки данных */
+.product-output,
+.safe-output-example {
+    padding: 16px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    color: #f9fafb;
+    background-color: #111827;
+    border-radius: 8px;
+}
+.js-check summary {
+    cursor: pointer;
+}
+.js-check summary:focus-visible {
+    outline: 3px solid #222222;
+    outline-offset: 3px;
+}
