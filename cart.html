@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Выбранные туры и расчёт стоимости поездки.">
+    <title>Корзина туров — TURIST bezgranits</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/data.js" defer></script>
+    <script src="js/catalog.js" defer></script>
+    <script src="js/promotions.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/validation.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">
+        Перейти к содержимому
+    </a>
+
+    <!-- ==================== ШАПКА ==================== -->
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__logo" href="index.html">TURIST bezgranits</a>
+
+            <button class="button button--secondary menu-toggle" type="button"
+                aria-controls="site-navigation" aria-expanded="true" hidden>
+                Меню
+            </button>
+
+            <nav class="site-nav" id="site-navigation" aria-label="Основная навигация">
+                <ul class="site-nav__list">
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html">Главная</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="catalog.html">Каталог</a>
+                    </li>
+                    <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="cart.html" aria-current="page">Корзина (<span data-cart-count>0</span>)</a></li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="contacts.html">
+                            Контакты
+                        </a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html#advantages">Преимущества</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html#popular">Популярные товары</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html#contacts">Обратная связь</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==================== ОСНОВНОЕ СОДЕРЖИМОЕ ==================== -->
+    <main id="main-content" tabindex="-1">
+        <section class="section cart">
+            <h1 class="section__title">Корзина туров</h1>
+            <p>Количество означает число участников каждого тура: от 1 до 20. Расчёт предварительный, по цене за участника с учётом применённого промокода.</p>
+            <p id="cart-empty">Корзина пуста. Выберите тур в <a href="catalog.html">каталоге</a>.</p>
+            <div id="cart-items" class="cart__items"></div>
+            <div id="cart-summary" class="cart__summary" hidden>
+                <div id="cart-promo" class="promo"></div>
+                <p>Итого: <strong id="cart-total">0 руб.</strong></p>
+                <a class="button button--primary" id="cart-checkout" href="order.html?from=cart">Оформить заказ</a>
+                <button class="button button--secondary" id="cart-clear" type="button">Очистить корзину</button>
+            </div>
+            <p id="cart-message" role="status" aria-live="polite"></p>
+            <p id="cart-storage-message" role="status"></p>
+            <a class="button button--primary" href="catalog.html">Продолжить выбор туров</a>
+            <noscript>Для работы корзины включите JavaScript.</noscript>
+        </section>
+    </main>
+
+    <!-- ==================== ПОДВАЛ ==================== -->
+    <footer class="site-footer">
+        <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены. DISIGN BY ANDREW TRUSHKOV EFBO-04-25.</p>
+        <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+    </footer>
+    <a class="scroll-top" href="#" aria-label="Наверх">↑</a>
+</body>
+</html>

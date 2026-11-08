@@ -27,8 +27,15 @@ img {
 
 /* Шапка и меню */
 .site-header {
-    position: static;
+    position: sticky;
+    top: 0;
 }
+
+html { scroll-padding-top: calc(var(--header-height, 100px) + 16px); }
+.site-header .site-nav { max-height: 65dvh; overflow-y: auto; }
+.cart-item__description { margin: 0; }
+.cart-item__description h3 { margin: 0 0 6px; font-size: 1rem; }
+.cart-item__description p { margin: 0; color: var(--color-muted); }
 
 .site-header__inner {
     padding: 16px;

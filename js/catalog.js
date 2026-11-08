@@ -104,9 +104,19 @@ function createProductCard(product) {
     button.classList.add('button', 'button--primary', 'product-card__button');
     button.dataset.productId = product.id;
     button.dataset.action = 'details';
+    button.setAttribute('aria-controls', 'catalog-details');
+    button.setAttribute('aria-expanded', 'false');
     button.textContent = 'Подробнее';
     button.setAttribute('aria-label', `Подробнее: ${product.title}`);
-    card.append(image, title, description, price, status, button);
+    const addButton = document.createElement('button');
+    addButton.type = 'button';
+    addButton.classList.add('button', 'button--secondary');
+    addButton.dataset.action = 'add-to-cart';
+    addButton.dataset.productId = product.id;
+    addButton.disabled = !product.isAvailable;
+    addButton.textContent = product.isAvailable ? 'В корзину' : 'Недоступен';
+    addButton.setAttribute('aria-label', `В корзину: ${product.title}`);
+    card.append(image, title, description, price, status, button, addButton);
     return card;
 }
 
@@ -166,11 +176,71 @@ if (productsContainer) {
         if (!button || !productsContainer.contains(button)) return;
         const product = findProductById(products, Number(button.dataset.productId));
         if (!product) return;
-        const details = document.querySelector('#catalog-details');
-        details.textContent = `${product.title}. ${product.description} Цена от ${formatPrice(product.price)}. Рейтинг: ${product.rating}. ${getProductStatus(product)}.`;
-        details.hidden = false;
-        details.scrollIntoView({ block: 'nearest' });
+        showProductDetails(product, button);
     });
     readFilters();
 }
 
+
+// Подробности тура формируются безопасными операциями DOM.
+function showProductDetails(product, trigger) {
+    const panel = document.querySelector('#catalog-details');
+    function node(tag, className, text) {
+        const result = document.createElement(tag);
+        if (className) result.className = className;
+        if (text !== undefined) result.textContent = text;
+        return result;
+    }
+    function listSection(title, items, ordered = false) {
+        const section = node('section', 'tour-details__section');
+        const list = node(ordered ? 'ol' : 'ul');
+        items.forEach((item) => list.append(node('li', '', item)));
+        section.append(node('h3', '', title), list);
+        return section;
+    }
+    panel.replaceChildren();
+    document.querySelectorAll('[data-action="details"]').forEach((button) => button.setAttribute('aria-expanded', 'false'));
+    trigger.setAttribute('aria-expanded', 'true');
+    const header = node('div', 'tour-details__header');
+    const title = node('h2', '', product.title);
+    title.id = 'tour-details-title';
+    title.tabIndex = -1;
+    const close = node('button', 'button button--secondary', 'Закрыть');
+    close.type = 'button';
+    close.setAttribute('aria-label', 'Закрыть подробности тура');
+    function closeDetails() {
+        panel.hidden = true;
+        trigger.setAttribute('aria-expanded', 'false');
+        if (trigger.isConnected) trigger.focus();
+    }
+    close.addEventListener('click', closeDetails);
+    panel.onkeydown = (event) => {
+        if (event.key === 'Escape') { event.preventDefault(); closeDetails(); }
+    };
+    header.append(title, close);
+    const intro = node('div', 'tour-details__intro');
+    const figure = node('figure', 'tour-details__figure');
+    const image = node('img', 'tour-details__image');
+    image.src = product.detailImage;
+    image.alt = product.detailImageAlt;
+    image.width = 1536;
+    image.height = 1024;
+    image.decoding = 'async';
+    figure.append(image);
+    const description = node('div', 'tour-details__overview');
+    description.append(node('p', 'tour-details__country', product.country), node('p', '', product.overview), node('p', '', `Формат: ${product.travelStyle}.`), node('p', '', `Продолжительность и условия: ${product.description}`));
+    intro.append(figure, description);
+    const stay = node('section', 'tour-details__section');
+    stay.append(node('h3', '', 'Размещение и питание'), node('p', '', product.accommodation), node('p', '', product.meals));
+    const footer = node('div', 'tour-details__footer');
+    const add = node('button', 'button button--primary', product.isAvailable ? 'В корзину' : 'Бронирование недоступно');
+    add.type = 'button';
+    add.dataset.action = 'add-to-cart';
+    add.dataset.productId = product.id;
+    add.disabled = !product.isAvailable;
+    footer.append(node('p', '', `От ${formatPrice(product.price)} за участника. ${getProductStatus(product)}.`), add);
+    panel.append(header, intro, listSection('Примерная программа', product.program, true), stay, listSection('Включено', product.included), listSection('Оплачивается отдельно', product.notIncluded), node('p', 'tour-details__note', 'Пример программы для учебного проекта. Состав услуг и цены демонстрационные; фактическое бронирование не выполняется.'), footer);
+    panel.hidden = false;
+    title.focus({ preventScroll: true });
+    panel.scrollIntoView({ block: 'start' });
+}

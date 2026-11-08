@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="css/responsive.css">
     <script src="js/data.js" defer></script>
     <script src="js/catalog.js" defer></script>
+    <script src="js/promotions.js" defer></script>
+    <script src="js/cart.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="js/validation.js" defer></script>
 </head>
@@ -37,6 +39,7 @@
                             Каталог
                         </a>
                     </li>
+                    <li class="site-nav__item"><a class="site-nav__link" href="cart.html">Корзина (<span data-cart-count>0</span>)</a></li>
                     <li class="site-nav__item">
                         <a class="site-nav__link" href="contacts.html">Контакты</a>
                     </li>
@@ -125,9 +128,11 @@
             <section class="catalog-products">
                 <h2 class="catalog-products__title">Список туров</h2>
 
+                <p id="cart-message" role="status" aria-live="polite"></p>
+                <p id="cart-storage-message" role="status"></p>
                 <p id="catalog-status" role="status" aria-live="polite"></p>
                 <p id="catalog-empty" hidden>Туры не найдены. Измените условия поиска или сбросьте фильтры.</p>
-                <p id="catalog-details" role="status" hidden></p>
+                <section id="catalog-details" class="tour-details" aria-labelledby="tour-details-title" hidden></section>
                 <noscript>Для поиска и фильтрации включите JavaScript. Ниже представлен полный каталог.</noscript>
                 <div class="products-grid" id="products-list" data-products-container>
 
