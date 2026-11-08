@@ -8,6 +8,8 @@ TURIST bezgranits — учебный сайт туристического аг�
 
 ## Практическая работа №15
 
+Сайт на GitHub Pages: [TURIST bezgranits](https://admuty.github.io/kr4-js-shop/).
+
 Выполнено:
 
 - подготовлен отдельный проект `kr4-js-shop` на основе КР №3;
