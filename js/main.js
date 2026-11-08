@@ -60,6 +60,7 @@ if (orderDialog) {
         button.addEventListener('click', () => {
             const productName = button.dataset.product;
             selectedProductInput.value = productName;
+            document.dispatchEvent(new CustomEvent('order:select', { detail: productName }));
             orderDialog.showModal();
         });
     });
@@ -175,23 +176,12 @@ console.log('Средняя цена:', calculateAveragePrice(products));
 console.table(getPreparedProducts(products, 'тур', 'asia', 'asc'));
 console.log('Описание первого тура:', createProductSummary(products[0]));
 
-const messageElement = document.querySelector('.js-message');
-const productOutputElement = document.querySelector('.product-output');
-if (messageElement) {
-    messageElement.textContent = 'Массив туров и функции обработки данных подключены.';
-}
-if (productOutputElement) {
-    productOutputElement.textContent = [
-        `Всего туров: ${products.length}`,
-        `Доступно для бронирования: ${countAvailableProducts(products)}`,
-        `Общая стоимость: ${formatPrice(calculateTotalPrice(products))}`,
-        `Средняя цена: ${formatPrice(calculateAveragePrice(products))}`,
-        `Результатов поиска «Париж»: ${searchProducts(products, 'Париж').length}`
-    ].join('\n');
-}
-
-// Проверка текстового представления данных без интерпретации HTML-разметки.
-const safeOutputExample = document.querySelector('.safe-output-example');
-if (safeOutputExample) {
-    safeOutputExample.textContent = '<strong>Текст пользователя</strong>';
+// Отступ якорных переходов учитывает фактическую высоту закреплённой шапки.
+const stickyHeader = document.querySelector('.site-header');
+if (stickyHeader) {
+    const updateHeaderOffset = () => {
+        document.documentElement.style.setProperty('--header-height', `${stickyHeader.getBoundingClientRect().height}px`);
+    };
+    new ResizeObserver(updateHeaderOffset).observe(stickyHeader);
+    updateHeaderOffset();
 }

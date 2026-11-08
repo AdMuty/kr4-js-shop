@@ -710,25 +710,75 @@ textarea:focus-visible,
 
 
 /* Представление результатов обработки данных */
-.product-output,
-.safe-output-example {
-    padding: 16px;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-    color: #f9fafb;
-    background-color: #111827;
-    border-radius: 8px;
-}
-.js-check summary {
-    cursor: pointer;
-}
-.js-check summary:focus-visible {
-    outline: 3px solid #222222;
-    outline-offset: 3px;
-}
+
 
 /* Элементы интерактивного каталога. */
 .filters-form select { width: 100%; min-width: 0; font: inherit; }
 #catalog-status, #catalog-empty, #catalog-details { margin: 0 0 16px; overflow-wrap: anywhere; }
 #catalog-details { padding: 16px; border: 1px solid var(--color-primary, #0057b8); border-radius: 8px; }
 [hidden] { display: none !important; }
+
+/* Корзина туров. */
+.cart > p, .cart__summary { margin-bottom: 20px; }
+.cart__items { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; margin: 20px 0; }
+.cart-item { display: flex; flex-direction: column; min-width: 0; gap: 12px; padding: 14px; border: 1px solid #ccc; border-radius: 12px; }
+.cart-item__image { display: block; width: 100%; height: 150px; object-fit: cover; border-radius: 8px; }
+.cart-item__content { display: flex; flex-direction: column; flex: 1; gap: 8px; min-width: 0; overflow-wrap: anywhere; }
+.cart-item__content > p, .cart-item__title { margin: 0; }
+.cart-item__content > .button { width: 100%; margin-top: auto; min-height: 44px; }
+.cart-item__title { font-size: 1.125rem; }
+.cart-item__quantity { width: 100%; max-width: 140px; min-height: 44px; padding: 8px; font: inherit; border: 1px solid #767676; border-radius: 6px; }
+.cart__summary { padding: 16px; background: #f3f4f6; border-radius: 8px; }
+.cart__summary p { margin-bottom: 12px; font-size: 1.25rem; }
+.button:disabled { opacity: .65; cursor: not-allowed; }
+#cart-message, #cart-storage-message { margin-bottom: 16px; overflow-wrap: anywhere; }
+@media (min-width: 640px) {
+    .cart__items { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+    .cart__items { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* Одинаковая ширина действий карточек и оформление состава заявки. */
+.product-card > .button { width: 100%; align-self: stretch; text-align: center; }
+.cart__summary { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.cart__summary p { margin: 0; flex: 1 1 100%; }
+.order-selection { grid-column: 1 / -1; min-width: 0; }
+.order-selection > p, .order-selection > h2 { margin-bottom: 16px; }
+.order-item { display: grid; gap: 12px; margin: 16px 0; padding: 16px; border: 1px solid #ccc; border-radius: 8px; min-width: 0; }
+.order-item .order-form__field { min-width: 0; }
+.order-item select { width: 100%; text-overflow: ellipsis; }
+.order-item__subtotal { overflow-wrap: anywhere; }
+.order-selection__total { margin-top: 20px; font-weight: 700; }
+@media (min-width: 768px) {
+    .order-form--page .order-item { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+    .cart__summary p { flex: 1 1 auto; }
+}
+
+/* Подробная программа тура с отдельной иллюстрацией. */
+.tour-details__header, .tour-details__footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.tour-details__header { margin-bottom: 20px; }
+.tour-details__header h2 { margin: 0; }
+.tour-details__intro { display: grid; gap: 20px; }
+.tour-details__figure { margin: 0; min-width: 0; }
+.tour-details__image { display: block; width: 100%; max-width: 320px; height: auto; border-radius: 10px; }
+.tour-details__figure figcaption { margin-top: 8px; font-size: .8rem; color: var(--color-muted); }
+.tour-details__overview p { margin: 0 0 12px; }
+.tour-details__country { font-weight: 700; color: var(--color-primary); }
+.tour-details__section { margin-top: 22px; }
+.tour-details__section h3 { margin: 0 0 10px; font-size: 1.1rem; }
+.tour-details__section ul, .tour-details__section ol { padding-left: 24px; }
+.tour-details__section li { margin-bottom: 8px; }
+.tour-details__note { margin: 20px 0; font-size: .875rem; color: var(--color-muted); }
+.tour-details__footer { border-top: 1px solid var(--color-border); padding-top: 16px; }
+@media (min-width: 768px) {
+    .tour-details__intro { grid-template-columns: minmax(0, 280px) minmax(0, 1fr); }
+}
+
+/* Промокод и разбивка итоговой суммы. */
+.promo { flex-basis: 100%; width: 100%; min-width: 0; padding: 16px 0; }
+.promo__field { max-width: 360px; }
+.promo__field label { display: block; margin-bottom: 8px; }
+.promo__actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.promo p { font-size: .95rem; margin: 8px 0; }
+.promo__breakdown { font-weight: 600; }
