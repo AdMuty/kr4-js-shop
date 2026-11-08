@@ -257,28 +257,87 @@ function createProductSummary(product) {
     return `${product.title}: ${formatPrice(finalPrice)}. Статус: ${getProductStatus(product)}.`;
 }
 
-console.log('Файл main.js подключён');
-console.log(product);
-console.table(product);
-const discountValue = calculateDiscount(product.price, product.discountPercent);
-const finalPrice = calculateFinalPrice(product.price, product.discountPercent);
-const productSummary = createProductSummary(product);
-// Признак наличия скидки для тура, доступного к бронированию.
-const hasAvailableDiscount = product.isAvailable === true && product.discountPercent > 0;
-console.log('Исходная цена:', formatPrice(product.price));
-console.log('Размер скидки:', discountValue);
-console.log('Итоговая цена:', finalPrice);
-console.log('Статус:', getProductStatus(product));
-console.log('Есть доступный тур со скидкой:', hasAvailableDiscount);
-console.log(productSummary);
+// ==================== ОБРАБОТКА МАССИВА ТУРОВ ====================
+function getProductTitles(products) {
+    return products.map((product) => product.title);
+}
+
+function getAvailableProducts(products) {
+    return products.filter((product) => product.isAvailable);
+}
+
+function searchProducts(products, query) {
+    const normalizedQuery = query.trim().toLowerCase();
+    return products.filter((product) => product.title.toLowerCase().includes(normalizedQuery));
+}
+
+function filterProductsByCategory(products, category) {
+    if (category === 'all' || category === '') return [...products];
+    return products.filter((product) => product.category === category);
+}
+
+function sortProductsByPrice(products, direction = 'asc') {
+    // Сортировка копии сохраняет исходный порядок данных каталога.
+    return [...products].sort((first, second) => direction === 'desc'
+        ? second.price - first.price
+        : first.price - second.price);
+}
+
+function findProductById(products, id) {
+    return products.find((product) => product.id === id);
+}
+
+function calculateTotalPrice(products) {
+    return products.reduce((total, product) => total + product.price, 0);
+}
+
+function countAvailableProducts(products) {
+    let count = 0;
+    for (const product of products) {
+        if (product.isAvailable) count += 1;
+    }
+    return count;
+}
+
+function calculateAveragePrice(products) {
+    if (products.length === 0) return 0;
+    return Math.round(calculateTotalPrice(products) / products.length);
+}
+
+function getPreparedProducts(products, query = '', category = 'all', sortDirection = 'asc') {
+    const searchResults = searchProducts(products, query);
+    const filteredProducts = filterProductsByCategory(searchResults, category);
+    return sortProductsByPrice(filteredProducts, sortDirection);
+}
+
+console.log('Массив туров подключён');
+console.table(products);
+console.log('Названия:', getProductTitles(products));
+console.table(getAvailableProducts(products));
+console.table(searchProducts(products, '  ПАРИЖ  '));
+console.table(filterProductsByCategory(products, 'asia'));
+console.table(sortProductsByPrice(products, 'asc'));
+console.table(sortProductsByPrice(products, 'desc'));
+console.log('Тур с id 1:', findProductById(products, 1));
+console.log('Общая стоимость:', calculateTotalPrice(products));
+console.log('Доступные туры:', countAvailableProducts(products));
+console.log('Средняя цена:', calculateAveragePrice(products));
+console.table(getPreparedProducts(products, 'тур', 'asia', 'asc'));
+console.log('Описание первого тура:', createProductSummary(products[0]));
 
 const messageElement = document.querySelector('.js-message');
 const productOutputElement = document.querySelector('.product-output');
 if (messageElement) {
-    messageElement.textContent = 'JavaScript подключён корректно.';
+    messageElement.textContent = 'Массив туров и функции обработки данных подключены.';
 }
 if (productOutputElement) {
-    productOutputElement.textContent = productSummary;
+    productOutputElement.textContent = [
+        `Всего туров: ${products.length}`,
+        `Доступно для бронирования: ${countAvailableProducts(products)}`,
+        `Общая стоимость: ${formatPrice(calculateTotalPrice(products))}`,
+        `Средняя цена: ${formatPrice(calculateAveragePrice(products))}`,
+        `Результатов поиска «Париж»: ${searchProducts(products, 'Париж').length}`
+    ].join('\n');
 }
 
 // Проверка текстового представления данных без интерпретации HTML-разметки.
