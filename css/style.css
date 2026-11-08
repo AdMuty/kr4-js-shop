@@ -726,3 +726,9 @@ textarea:focus-visible,
     outline: 3px solid #222222;
     outline-offset: 3px;
 }
+
+/* Элементы интерактивного каталога. */
+.filters-form select { width: 100%; min-width: 0; font: inherit; }
+#catalog-status, #catalog-empty, #catalog-details { margin: 0 0 16px; overflow-wrap: anywhere; }
+#catalog-details { padding: 16px; border: 1px solid var(--color-primary, #0057b8); border-radius: 8px; }
+[hidden] { display: none !important; }

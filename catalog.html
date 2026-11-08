@@ -7,7 +7,10 @@
     <title>Каталог товаров – TURIST bezgranits</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/data.js" defer></script>
+    <script src="js/catalog.js" defer></script>
     <script src="js/main.js" defer></script>
+    <script src="js/validation.js" defer></script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">
@@ -71,25 +74,23 @@
                     <summary class="filters-toggle">Показать фильтры</summary>
                 <form class="filters-form" action="#" method="get">
 
-                    <fieldset class="filters-form__group">
-                        <legend class="filters-form__legend">Категория</legend>
-
-                        <label class="filters-form__label">
-                            <input class="filters-form__checkbox" type="checkbox" name="category" value="all">
-                            Все туры
-                        </label>
-
-                        <label class="filters-form__label">
-                            <input class="filters-form__checkbox" type="checkbox" name="category" value="popular">
-                            Популярные
-                        </label>
-
-                        <label class="filters-form__label">
-                            <input class="filters-form__checkbox" type="checkbox" name="category" value="new">
-                            Новинки
-                        </label>
-                    </fieldset>
-
+                    <label for="catalog-search">Поиск по названию</label>
+                    <input class="filters-form__input" id="catalog-search" type="search" placeholder="Например, Париж">
+                    <label for="category-filter">Категория</label>
+                    <select class="filters-form__input" id="category-filter">
+                        <option value="all">Все направления</option>
+                        <option value="europe">Европа</option>
+                        <option value="america">Америка</option>
+                        <option value="asia">Азия</option>
+                        <option value="africa">Африка</option>
+                    </select>
+                    <label for="sort-select">Сортировка</label>
+                    <select class="filters-form__input" id="sort-select">
+                        <option value="default">Исходный порядок</option>
+                        <option value="asc">Сначала дешевле</option>
+                        <option value="desc">Сначала дороже</option>
+                        <option value="title">По названию</option>
+                    </select>
                     <fieldset class="filters-form__group">
                         <legend class="filters-form__legend">Цена</legend>
 
@@ -110,11 +111,12 @@
                             name="price-to"
                             type="number"
                             min="0"
-                            placeholder="5000"
+                            placeholder="500000"
                         >
                     </fieldset>
 
                     <button class="button button--primary" type="submit">Применить</button>
+                    <button class="button button--secondary" type="reset">Сбросить</button>
 
                 </form>
                 </details>
@@ -123,7 +125,11 @@
             <section class="catalog-products">
                 <h2 class="catalog-products__title">Список туров</h2>
 
-                <div class="products-grid">
+                <p id="catalog-status" role="status" aria-live="polite"></p>
+                <p id="catalog-empty" hidden>Туры не найдены. Измените условия поиска или сбросьте фильтры.</p>
+                <p id="catalog-details" role="status" hidden></p>
+                <noscript>Для поиска и фильтрации включите JavaScript. Ниже представлен полный каталог.</noscript>
+                <div class="products-grid" id="products-list" data-products-container>
 
                     <article class="product-card">
                         <img class="product-card__image" src="images/usa.jpg" alt="Тур в Вашингтон">
