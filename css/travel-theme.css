@@ -1,0 +1,112 @@
+/* Оформление КР4: морская палитра и акварельный пейзаж. */
+:root {
+    --color-text: #20394b;
+    --color-muted: #526573;
+    --color-primary: #075a91;
+    --color-primary-dark: #06416a;
+    --color-border: #cddde6;
+    --color-surface: #f0f6f8;
+    --color-surface-accent: #eaf3f8;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+}
+
+body {
+    background: #eef4f5;
+    isolation: isolate;
+}
+
+/* Отдельный слой сохраняет пропорции рисунка при длинной странице. */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(#ffffff24, #ffffff24),
+        url('../images/travel-background.webp') center bottom / cover no-repeat;
+}
+
+.site-header {
+    background: rgba(255, 255, 255, .96);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 4px 24px #163a5210;
+}
+
+.site-header__logo { color: var(--color-primary-dark); letter-spacing: .025em; }
+.site-nav__link { border-radius: 10px; }
+.button { border-radius: 9px; font-weight: 600; }
+.button--primary { box-shadow: 0 4px 12px #075a911c; }
+.button--secondary { background-color: #fff; }
+.button--secondary:hover { background-color: var(--color-primary); }
+
+.hero {
+    padding: clamp(28px, 5vw, 64px) clamp(20px, 4vw, 48px);
+    min-height: 430px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background-image: linear-gradient(90deg, #fffffff0, #ffffffe0 48%, #ffffff15),
+        url('../images/hero-coast.webp');
+    background-position: center, center bottom;
+    color: var(--color-text);
+    border: 1px solid #d2e1e8;
+    box-shadow: 0 16px 48px #163a5214;
+}
+
+.hero::before { display: none; }
+.hero__title { max-width: 720px; font-size: clamp(28px, 3.2vw, 44px); line-height: 1.15; }
+.hero__text { max-width: 620px; color: #354e60; }
+.hero > .button { margin-top: 12px; }
+
+main > .section,
+.product-detail {
+    width: calc(100% - 32px);
+    padding: clamp(20px, 3vw, 32px);
+    background: rgba(255, 255, 255, .96);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 12px 36px #163a520c;
+}
+
+main > .section:first-child { margin-top: 24px; }
+.section__title { color: var(--color-primary-dark); }
+.product-card, .advantage-card, .cart-item, .catalog-filters,
+#catalog-details, .breadcrumbs {
+    background-color: #fff;
+}
+.product-card, .advantage-card, .cart-item {
+    box-shadow: 0 5px 18px #163a520a;
+}
+.product-card:hover { box-shadow: 0 10px 28px #163a521a; }
+.product-card__price { color: var(--color-primary-dark); }
+.catalog-filters { align-self: start; }
+.catalog-products > #catalog-status,
+.catalog-products > #catalog-empty {
+    padding: 12px 16px;
+    background: #fffffff5;
+    border-radius: 10px;
+}
+.breadcrumbs { width: calc(100% - 32px); padding: 12px 20px; border-radius: 10px; }
+.cart__summary, .order-item { background: var(--color-surface); border: 1px solid var(--color-border); }
+.order-form__input, .order-form__select, .order-form__textarea,
+.filters-form input, .filters-form select { background-color: #fff; color: var(--color-text); }
+.aside-info { border-radius: 0 14px 14px 0; background: #f0f6f8f5; }
+.site-footer { background: #17394b; color: #f0f6f8; border-top: 1px solid #315568; }
+.site-footer a { color: #fff; }
+.scroll-top { box-shadow: 0 4px 18px #163a5233; }
+
+@media (max-width: 767px) {
+    body::before { background-position: center bottom; }
+    .hero { min-height: 440px; background-image: linear-gradient(#fffffff5, #ffffffd9 65%, #ffffff35), url('../images/hero-coast.webp'); }
+    main > .section, .product-detail { width: calc(100% - 24px); padding: 20px 16px; }
+    .site-footer { font-size: 14px; }
+}
+
+@media print {
+    body::before { display: none; }
+    .site-header { position: static; }
+    .hero { background: #fff; }
+    main > .section, .product-detail { box-shadow: none; }
+}
