@@ -14,7 +14,7 @@ const products = [
 const tourDetails = {
     "1": {
         "country": "Франция",
-        "detailImage": "images/details/paris-flag.png",
+        "detailImage": "images/details/paris-flag.webp",
         "detailImageAlt": "Эйфелева башня, Сена и флаг Франции",
         "overview": "Неделя городских прогулок: знаменитые площади, набережные и уютные кварталы Парижа. Маршрут сочетает обзорные экскурсии со свободным временем.",
         "program": [
@@ -37,7 +37,7 @@ const tourDetails = {
     },
     "2": {
         "country": "США",
-        "detailImage": "images/details/usa-flag.png",
+        "detailImage": "images/details/usa-flag.webp",
         "detailImageAlt": "Капитолий и флаг США",
         "overview": "Пять дней в Вашингтоне с акцентом на историю, музейные коллекции и зелёные пространства столицы. Спокойный городской маршрут с пешими прогулками.",
         "program": [
@@ -60,7 +60,7 @@ const tourDetails = {
     },
     "3": {
         "country": "КНДР",
-        "detailImage": "images/details/pyongyang-flag.png",
+        "detailImage": "images/details/pyongyang-flag.webp",
         "detailImageAlt": "Панорама Пхеньяна и флаг КНДР",
         "overview": "Четырёхдневная обзорная программа по Пхеньяну в составе организованной группы. Направление представлено для знакомства с архитектурой города; бронирование в каталоге сейчас недоступно.",
         "program": [
@@ -83,7 +83,7 @@ const tourDetails = {
     },
     "4": {
         "country": "Турция",
-        "detailImage": "images/details/turkey-flag.png",
+        "detailImage": "images/details/turkey-flag.webp",
         "detailImageAlt": "Босфор, мечети Стамбула и флаг Турции",
         "overview": "Пять дней на пересечении двух частей света. В программе исторические кварталы, прогулки у воды, рынки и время для самостоятельного знакомства с городом.",
         "program": [
@@ -106,7 +106,7 @@ const tourDetails = {
     },
     "5": {
         "country": "Индонезия",
-        "detailImage": "images/details/bali-flag.png",
+        "detailImage": "images/details/bali-flag.webp",
         "detailImageAlt": "Озёрный храм на Бали и флаг Индонезии",
         "overview": "Десять дней среди тропической зелени и океанских пейзажей. Пляжные дни чередуются с поездками в культурные районы острова.",
         "program": [
@@ -129,7 +129,7 @@ const tourDetails = {
     },
     "6": {
         "country": "Египет",
-        "detailImage": "images/details/egypt-flag.png",
+        "detailImage": "images/details/egypt-flag.webp",
         "detailImageAlt": "Пирамиды Гизы и флаг Египта",
         "overview": "Восемь дней пляжного отдыха с возможностью дополнить поездку исторической экскурсией. Основная программа рассчитана на отдых у Красного моря.",
         "program": [
@@ -152,7 +152,7 @@ const tourDetails = {
     },
     "7": {
         "country": "Япония",
-        "detailImage": "images/details/japan-flag.png",
+        "detailImage": "images/details/japan-flag.webp",
         "detailImageAlt": "Храмовый комплекс в Токио и флаг Японии",
         "overview": "Девять дней контрастов: традиционные кварталы, современные улицы и городские парки. Тур временно недоступен для бронирования в учебном каталоге.",
         "program": [
@@ -175,7 +175,7 @@ const tourDetails = {
     },
     "8": {
         "country": "Марокко",
-        "detailImage": "images/details/morocco-flag.png",
+        "detailImage": "images/details/morocco-flag.webp",
         "detailImageAlt": "Айт-Бен-Хадду, горы и флаг Марокко",
         "overview": "Семидневный маршрут с атмосферой старых городов и традиционного гостеприимства. Прогулки по медине сочетаются со знакомством с ремёслами и пейзажами страны.",
         "program": [
@@ -198,7 +198,7 @@ const tourDetails = {
     },
     "9": {
         "country": "Мальдивы",
-        "detailImage": "images/details/maldives-flag.png",
+        "detailImage": "images/details/maldives-flag.webp",
         "detailImageAlt": "Лагуна, водные виллы и флаг Мальдив",
         "overview": "Восемь дней спокойного отдыха на островном курорте. Водная вилла, прогулки по пляжу и время у лагуны для тех, кто хочет отдохнуть от городской суеты.",
         "program": [

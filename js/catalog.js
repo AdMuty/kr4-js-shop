@@ -223,8 +223,9 @@ function showProductDetails(product, trigger) {
     const image = node('img', 'tour-details__image');
     image.src = product.detailImage;
     image.alt = product.detailImageAlt;
-    image.width = 1536;
-    image.height = 1024;
+    image.width = 640;
+    image.height = 427;
+    image.loading = 'eager';
     image.decoding = 'async';
     figure.append(image);
     const description = node('div', 'tour-details__overview');
